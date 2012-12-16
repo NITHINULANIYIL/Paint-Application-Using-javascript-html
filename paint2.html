@@ -1,0 +1,128 @@
+<html>
+<head><title>paint</title></head>
+<body><div id="container">
+        <canvas id = "paint" width=600 height=500 style="border: 5px solid #FF0066"></canvas></div>
+<script>
+var canvas=document.getElementById("paint");
+var context=canvas.getContext("2d");
+var x=0,y=0;
+function line(){
+canvas.onmousedown = line1
+canvas.onmouseup = line2
+}
+function rect(){
+canvas.onmousedown = rect1
+canvas.onmouseup = rect2
+}
+function circle(){
+canvas.onmousedown = circle1
+canvas.onmouseup = circle2
+}
+function clear(){
+context.clearRect(0,0,600,500);
+}
+function line1(e){
+x = e.clientX ;
+y = e.clientY;
+}
+function line2(e){
+x1 = e.clientX ;
+y1 = e.clientY;
+context.beginPath();
+context.moveTo(x,y);
+context.lineTo(x1,y1);
+context.stroke();
+context.closePath();
+}
+function rect1(e){
+x = e.clientX ;
+y = e.clientY;
+}
+function rect2(e){
+x1 = e.clientX ;
+y1 = e.clientY;
+context.strokeRect(x,y,x1-x,y1-y)
+
+}
+function circle1(e){
+x = e.clientX ;
+y = e.clientY;
+}
+function circle2(e){
+x1 = e.clientX ;
+y1 = e.clientY;
+r = x1 - x;
+context.beginPath();
+context.arc(x, y, r, 0, 2 * Math.PI, false);
+context.stroke();
+}
+function clear1(){
+c = clear()
+return c;
+}
+function color(col){
+context.strokeStyle=col
+context.fillStyle=col
+}
+
+function eraser(){
+canvas.onmousedown = eraser1
+canvas.onmouseup = eraser2
+}
+function eraser1(e){
+x = e.clientX ;
+y = e.clientY;
+}
+function eraser2(e){
+x1 = e.clientX ;
+y1 = e.clientY;
+context.fillStyle = 'white'
+context.fillRect(x,y,x1-x,y1-y)
+}
+function linw(w){
+context.lineWidth = w;
+}
+</script>
+<form>
+<input  type="button" value="line" onclick="line()">
+<input  type="button" value="rectangle" onclick="rect()">
+<input  type="button" value="circle" onclick="circle()">
+<input  type="button" value="eraser" onclick="eraser()">
+<input  type="button" value="clear1" onclick="clear1()">
+<select Style = "color:green"><option onclick = "linw(2)">2px</option><option onclick = "linw(4)">4px</option><option onclick = "linw(6)">6px </option><option onclick = "linw(8)">8px</option></select>
+</form>
+<table>
+<td><div onclick = "color('#0000ff')" style ="width:20px;height:20px;background-color:#0000ff"></div><td>
+<td><div onclick = "color('#009fff')" style ="width:20px;height:20px;background-color:#009fff"></div><td>
+<td><div onclick = "color('#0fffff')" style ="width:20px;height:20px;background-color:#0fffff"></div><td>
+<td><div onclick = "color('#bfffff')" style ="width:20px;height:20px;background-color:#bfffff"></div><td>
+<td><div onclick = "color('#000000')" style ="width:20px;height:20px;background-color:#000000"></div><td>
+<td><div onclick = "color('#333333')" style ="width:20px;height:20px;background-color:#333333"></div><td>
+<td><div onclick = "color('#666666')" style ="width:20px;height:20px;background-color:#666666"></div><td>
+<td><div onclick = "color('#999999')" style ="width:20px;height:20px;background-color:#999999"></div><td>
+<td><div onclick = "color('#ffcc66')" style ="width:20px;height:20px;background-color:#ffcc66"></div><td>
+<td><div onclick = "color('#ffcc00')" style ="width:20px;height:20px;background-color:#ffcc00"></div><td>
+<td><div onclick = "color('#ffff00')" style ="width:20px;height:20px;background-color:#ffff00"></div><td>
+<td><div onclick = "color('#ffff99')" style ="width:20px;height:20px;background-color:#ffff99"></div><td>
+<td><div onclick = "color('#003300')" style ="width:20px;height:20px;background-color:#003300"></div><td>
+<td><div onclick = "color('#555000')" style ="width:20px;height:20px;background-color:#555000"></div><td>
+<tr>
+<td><div onclick = "color('#00ff00')" style ="width:20px;height:20px;background-color:#00ff00"></div><td>
+<td><div onclick = "color('#99ff99')" style ="width:20px;height:20px;background-color:#99ff99"></div><td>
+<td><div onclick = "color('#f00000')" style ="width:20px;height:20px;background-color:#f00000"></div><td>
+<td><div onclick = "color('#ff6600')" style ="width:20px;height:20px;background-color:#ff6600"></div><td>
+<td><div onclick = "color('#ff9933')" style ="width:20px;height:20px;background-color:#ff9933"></div><td>
+<td><div onclick = "color('#F5DEB3')" style ="width:20px;height:20px;background-color:#F5DEB3"></div><td>
+<td><div onclick = "color('#330000')" style ="width:20px;height:20px;background-color:#330000"></div><td>
+<td><div onclick = "color('#663300')" style ="width:20px;height:20px;background-color:#663300"></div><td>
+<td><div onclick = "color('#cc6600')" style ="width:20px;height:20px;background-color:#cc6600"></div><td>
+<td><div onclick = "color('#DEB887')" style ="width:20px;height:20px;background-color:#DEB887"></div><td>
+<td><div onclick = "color('#aa0fff')" style ="width:20px;height:20px;background-color:#aa0fff"></div><td>
+<td><div onclick = "color('#cc66cc')" style ="width:20px;height:20px;background-color:#cc66cc"></div><td>
+<td><div onclick = "color('#ff66ff')" style ="width:20px;height:20px;background-color:#ff66ff"></div><td>
+<td><div onclick = "color('#ff99ff')" style ="width:20px;height:20px;background-color:#ff99ff"></div><td>
+
+</tr>
+</table>
+</body>
+</html>
